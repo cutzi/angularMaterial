@@ -1,0 +1,49 @@
+
+<div>
+	<div layout="column" ng-cloak="">
+		<md-content layout-padding="">
+			<section class="container">
+				<div id="carousel">
+					<figure><video id="v" controls preload="metadata">
+				<source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4">
+				</video></figure>
+					<figure>2</figure>
+					<figure>3</figure>
+					<figure>4</figure>
+					<figure>5</figure>
+					<figure>6</figure>
+					<figure>7</figure>
+					<figure>8</figure>
+					<figure>9</figure>
+				</div>
+			</section>
+			<section id="options">
+				<p id="navigation">
+					<button class="md-raised" id="previous" data-increment="-1">Previous</button>
+					<button class="md-raised" id="next" data-increment="1">Next</button>
+				</p>
+			</section>
+		</md-content>
+		<md-content layout-padding="">
+			<div class="msg" data-state="hidden">This browser doesn't support the WebKit Web Speech <abbr title="Application Programming Interface">API</abbr>. You need the latest version of Chrome. Sorry!</div>
+				<!--<video id="v" controls preload="metadata">
+				<source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" type="video/mp4">
+				</video> -->
+				<div class="rec-status">Recogniser status:<span id="recStatus">not recognising</span></div>
+				<md-button class="md-raised" id="startRecBtn">Start Recognition</md-button>
+				<md-button class="md-raised" id="stopRecBtn">Stop Recognition</md-button>
+				<p>Click "Start Recognition", give microphone access permission and start controlling the video's playback, mute and volume control via speech.<br>Available commands are:</p>
+				<ul>
+					<li id="vidPlay">"video play"</li>
+					<li id="vidStop">"video stop"</li>
+					<li id="vidReplay">"video replay"</li>
+					<li id="vidVolOn">"video volume on"</li>
+					<li id="vidVolOff">"video volume off"</li>
+					<li id="vidVolInc">"video volume increase"</li>
+					<li id="vidVolDec">"video volume decrease"</li>
+				</ul>
+				<input type="text" ng-model="commands">
+			</md-content>
+		</div>
+		
+</div>

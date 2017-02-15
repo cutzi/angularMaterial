@@ -1,0 +1,99 @@
+<div>
+  <div layout="column" class="md-inline-form inputdemoBasicUsage" >
+    <md-content layout-gt-sm="column" layout-padding="">
+      <form name="weatherForm" ng-submit="wgShowData(weatherlocation)">
+        <div layout="row" layout-xs="column" layout-align="left center">
+          <div flex-gt-xs="33">
+            <md-input-container class="md-block">
+              <label> Where? </label>
+              <input name="location" ng-model="weatherlocation" required />
+              <div ng-messages="weatherlocation.$error">
+                <div ng-message="required">required information </div>
+              </div>
+            </md-input-container>
+          </div>
+          <div layout="row" layout-align="center center" flex="">
+            <md-button id="show-data" class="md-raised" type="submit">ok</md-button>
+            <span flex></span>
+            <md-button class="md-raised" type="button" ng-click="refreshWeatherData()">refresh</md-button>
+            <!-- <md-button class="md-raised" type="button" ng-click="clearData()">clear</md-button> -->
+          </div>
+        </div>
+      </form>
+      <md-card ng-if="isData" layout="column" ng-show="weatherData">
+        <md-card-content>
+
+          <div class="main-content" layout="row" layout-xs="column">
+
+            <div flex-gt-xs="75"  flex-xs="100" class="spacebottom">
+              <div>
+                {{weatherData.city}}
+              </div>
+              <div>
+                {{weatherData.obs_time}}
+              </div>
+              <div ng-init="icon_src = ''">
+                <p>
+                  <span>
+                    <img class="big-icon" ng-src="{{weatherData.icon_url}}" alt="{{weatherData.text}}" />
+                    <md-tooltip md-direction="bottom">
+                      {{weatherData.text}}
+                    </md-tooltip>
+                  </span>
+                  <span id="big-temp"> {{weatherData.temp_c}}</span>°C 
+                </p>
+              </div>
+              <div>
+                feels like: {{weatherData.feelslike_c}}°C
+              </div>
+            </div>
+
+            <div flex class="spacebottom">
+              <md-input-container>
+               <md-switch ng-model="showDetails"> {{showDetails ? "Details" : "Hidden Details"}}</md-switch>
+              </md-input-container>
+              <div ng-if="showDetails">
+                <div>
+                  wind: {{weatherData.wind}} km/h, {{weatherData.wind_dir}}
+                </div>
+                <div>
+                  visibility: {{weatherData.visibility}} km
+                </div>
+                <div>
+                  precipation: {{weatherData.precip_today}} mm
+                </div>
+                <div>
+                  sunrise: {{weatherData.sunrise}}
+                </div>
+                <div>
+                  sunset: {{weatherData.sunset}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="main-content" layout="row" layout-xs="column">
+            <canvas  id="line" height="100" class="chart chart-line" chart-data="data"
+            chart-labels="labels"  chart-series="series" chart-options="options"
+            chart-dataset-override="datasetOverride" chart-click="onClick"></canvas>
+          </div>
+
+        </md-card-content>
+      </md-card>
+    </md-content>
+    <md-content class="fc-line">
+      <div ng-if="isData" layout-gt-xs="row" layout-align-gt-xs="start start">
+        <md-card ng-repeat="value in weatherData.forecast" ng-show="weatherData.forecast" class="forecast-card"  flex-gt-xs="10" flex-xs="50" flex-offset-xs="25" layout-xs="column" >
+          <a target="_blank" ng-href="{{weatherData.url}}" class="no-link-style">
+            <md-card-content layout="column" layout-align="center center">
+              <div>{{value.date.weekday_short}}</div>
+              <img ng-src="{{value.icon_url}}" alt="value.conditions" />
+              <div>{{value.high.celsius}}° {{value.low.celsius}}°</div>
+            </md-card-content>
+          </a>
+        </md-card>
+      </div>
+    </md-content>
+  </div>
+</div>

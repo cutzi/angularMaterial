@@ -1,0 +1,78 @@
+<div layout-padding="">
+	<md-card>
+		<md-card-content>
+			<md-input-container  flex="25" >
+				<label>username</label>
+				<input  ng-if="slackusername" ng-model="slackusername" disabled>
+				<md-button class="md-raised" ng-click="update()">refresh</md-button>
+			</md-input-container>
+			<md-tabs md-dynamic-height md-border-bottom >
+				<md-tab label="general" md-on-select="getActiveTab(0)">
+					<md-content class="md-padding">
+						<div layout="row" layout-align="start start" flex>
+							<md-input-container  flex="25" >
+								<label> channel </label>
+								<md-select ng-model="activeChannelSend" ng-change="changeChannel()">
+									<md-option ng-repeat="channel in channels" ng-value="channel.id">
+										{{channel.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div layout="row" layout-align="start center" flex>
+							<md-input-container flex="50">
+								<label>your message</label>
+								<textarea rows="3" md-select-on-focus ng-model="slackmessage"></textarea>
+							</md-input-container>
+							<md-button class="md-raised md-primary" ng-click="sendSlackMessage()">send message </md-button>
+						</div>
+					</md-content>
+					<div>
+						<md-list ng-if="showTable" flex style="background:#fff;color:#000">
+
+							<md-list-item  ng-repeat="message in messagehistory" class="md-2-line" ng-click="null"> <!-- | orderBy:'-'  -->
+								<md-list-item-text layout="column">
+									<span class="sm-txt">{{message.ts*1000 | date:'shortTime'}} - {{message.username}} </span>
+									{{message.text}} 
+								</md-list-item-text>
+								<md-divider style="border-top-color:rgba(0,0,0,0.48)" ng-if="!$last"></md-divider>
+							</md-list-item>
+						</md-list>
+					</div>
+				</md-tab>
+				<md-tab label="dm"  md-on-select="getActiveTab(1)">
+					<md-content class="md-padding">
+						<div layout="row" layout-align="start start" flex>
+							<md-input-container>
+								<label>direct Message</label>
+								<md-select ng-model="toUser" ng-change="changeDmChannel()">
+									<md-option ng-repeat="user in userList" ng-value="user.id">
+										{{user.name}}
+									</md-option>
+								</md-select>
+							</md-input-container>
+						</div>
+						<div layout="row" layout-align="start center" flex>
+							<md-input-container flex="50">
+								<label>your message</label>
+								<textarea rows="3" md-select-on-focus ng-model="slackmessage"></textarea>
+							</md-input-container>
+							<md-button class="md-raised md-primary" ng-click="sendSlackMessage()">send message </md-button>
+						</div>
+					</md-content>
+					<div>
+						<md-list ng-if="showTable" flex style="background:#fff;color:#000">
+							<md-list-item  ng-repeat="message in messagehistory" class="md-2-line" ng-click="null"> <!-- | orderBy:'-'  -->
+								<md-list-item-text layout="column">
+									<span class="sm-txt">{{message.ts*1000 | date:'shortTime'}} - {{message.username}} </span>
+									{{message.text}} 
+								</md-list-item-text>
+								<md-divider style="border-top-color:rgba(0,0,0,0.48)" ng-if="!$last"></md-divider>
+							</md-list-item>
+						</md-list>
+					</div>
+				</md-tab>
+			</md-tabs>
+		</md-card-content>
+	</md-card>
+</div>

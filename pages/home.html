@@ -1,0 +1,79 @@
+<div layout-padding="" layout-margin="" >
+	<md-content layout-padding layout-align="center center">
+	   <md-grid-list
+	       md-cols-gt-md="12" md-cols="3" md-cols-md="6" md-cols-xs="2"
+	       md-row-height-gt-md="1:1" md-row-height="4:3"
+	       md-gutter-gt-md="16px" md-gutter-md="8px" md-gutter="4px">
+	       
+	     	<md-grid-tile class="home-btn gray"
+	     	        md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	        <a href="#/weather" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Weather
+	     	        	</md-grid-tile-header>
+	     	        	<div layout="column" class="wrap-all" layout-align="space-around center">		
+	     	        		<span></span>     	        	
+		     	        	<img ng-src="{{weatherData.icon_url}}" class="" alt="{{weatherData.text}}"></img>
+		     	        	{{weatherData.temp_c}}°C, {{weatherData.text}} in {{weatherData.city}}
+	     	        	</div>
+	     	        </a>
+	     	    </md-grid-tile>
+
+	     	    <md-grid-tile class="home-btn green"
+	     	        md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	      <a href="#/navigation" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Navigation
+	     	        	</md-grid-tile-header>
+	     	        	<i class="material-icons home-icons">navigation</i>
+	     	        	
+	     	        </a>
+	     	    </md-grid-tile>
+
+	     	    <md-grid-tile class="home-btn yellow"
+	     	        md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	      <a href="#/slack" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Slack
+	     	        	</md-grid-tile-header>
+	     	        	<img ng-src="assets/svg/Slack.svg" class="" style="height:200px;opacity:0.8" alt=""></img>
+	     	        	
+	     	        </a>
+	     	    </md-grid-tile>
+
+	     	    <md-grid-tile class="home-btn purple"
+	     	        md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	      <a href="#/usermedia" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Media
+	     	        	</md-grid-tile-header>
+	     	        	<i class="material-icons home-icons">video_library</i>
+	     	        	
+	     	        </a>
+	     	    </md-grid-tile>
+
+	     	    <md-grid-tile class="home-btn red"
+	     	        md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	      <a href="#" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Time
+	     	        	</md-grid-tile-header>
+	     	        	<span class="home-time">{{currentTime | date:'medium'}}</span>
+	     	        	
+	     	        </a>
+	     	    </md-grid-tile>
+
+	     	    <md-grid-tile class="home-btn blue"
+	     	    md-rowspan="3" md-colspan="2" md-colspan-gt-md="4">
+	     	    <a href="#/facebook" class="wrap-all no-link-style" layout="row" layout-align="center center"> 
+	     	        	<md-grid-tile-header>
+	     	        		Facebook
+	     	        	</md-grid-tile-header>
+	     	        	<i class="material-icons home-icons">share</i>
+	     	        	
+	     	        </a>
+	     	</md-grid-tile>
+	     </md-grid-list>
+	 </md-content>
+	
+</div>
